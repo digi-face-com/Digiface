@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui'
+import { AccountMenu } from '@/components/layout/account-menu'
 
 // ════════════════════════════════════════
 // Navbar
@@ -52,9 +53,7 @@ export function Navbar() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Link href="/auth/login" className="hidden sm:block px-4 py-2 rounded-lg text-[13px] text-muted hover:text-text transition-all">
-          ورود
-        </Link>
+        <AccountMenu />
         <Link href="/auth/shop-register">
           <Button size="sm">ثبت فروشگاه رایگان</Button>
         </Link>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Vazirmatn, Cormorant_Garamond } from 'next/font/google'
+import { AppProviders } from '@/components/providers/app-providers'
 import './globals.css'
 
 const vazir = Vazirmatn({
@@ -30,7 +31,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl" className={`${vazir.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AppProviders>{children}</AppProviders>
+      </body>
     </html>
   )
 }
