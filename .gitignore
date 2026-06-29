@@ -12,6 +12,7 @@
 
 # env files (secrets — use .env.*.example as templates)
 .env
+.env.production
 .env*.local
 
 # debug
