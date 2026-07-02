@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import {
   LayoutDashboard,
   Package,
@@ -64,9 +64,16 @@ function NavLink({ item, compact = false }: { item: NavItem; compact?: boolean }
 }
 
 function AccountSidebar() {
+  const router = useRouter()
   const { user, logout } = useAuth()
   const displayName = user?.fullName || user?.username || 'کاربر'
   const avatarLetter = (user?.username?.[0] || user?.fullName?.[0] || user?.phone?.[0] || 'U').toUpperCase()
+
+  const handleLogout = async () => {
+    await logout()
+    router.push('/')
+    router.refresh()
+  }
 
   return (
     <aside className="hidden md:flex w-[240px] bg-card border-l border-border flex-shrink-0 fixed top-[72px] right-0 bottom-0 z-40 flex-col">
@@ -102,7 +109,7 @@ function AccountSidebar() {
         </Link>
         <button
           type="button"
-          onClick={() => void logout()}
+          onClick={() => void handleLogout()}
           className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] text-red hover:bg-red/5 transition-all"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red/10">

@@ -5,6 +5,12 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/context/auth-context'
+import { apiFetch } from '@/lib/api-client'
+import { isAdminRole } from '@/lib/auth/roles'
+
+type LoginResponse = {
+  user?: { role?: string }
+}
 
 export function LoginForm() {
   const router = useRouter()
@@ -15,31 +21,31 @@ export function LoginForm() {
   const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
 
   const handleLogin = async () => {
-    setError('')
     setLoading(true)
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const data = await apiFetch<LoginResponse>('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({ identifier, password }),
+        fallbackError: 'ورود ناموفق بود',
       })
 
-      const data = await res.json()
-      if (!res.ok) {
-        setError(data.error || 'ورود ناموفق بود')
-        return
+      await refreshUser()
+
+      const userRole = data.user?.role
+      let destination = nextPath
+      if (userRole && isAdminRole(userRole) && (nextPath === '/' || nextPath === '/account' || nextPath.startsWith('/account/'))) {
+        destination = '/admin'
       }
 
-      await refreshUser()
-      router.push(nextPath)
+      router.push(destination)
       router.refresh()
     } catch {
-      setError('خطا در ارتباط با سرور')
+      // خطا با toast نمایش داده می‌شود
     } finally {
       setLoading(false)
     }
@@ -70,12 +76,6 @@ export function LoginForm() {
             onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
           />
         </div>
-
-        {error && (
-          <p className="text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-3 py-2">
-            {error}
-          </p>
-        )}
 
         <Button className="w-full mt-1" size="lg" onClick={handleLogin} loading={loading}>
           ورود

@@ -28,7 +28,7 @@ export function AccountMenu() {
   if (!isAuthenticated || !user) {
     return (
       <Button variant="ghost" size="sm" className="inline-flex text-[13px] font-semibold hover:bg-transparent">
-        <Link href="/auth/login" className="hover:bg-transparent">ورود</Link>
+        <Link href="/auth/login?next=/account" className="hover:bg-transparent">ورود</Link>
       </Button>
     )
   }
