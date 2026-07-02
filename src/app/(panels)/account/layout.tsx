@@ -1,15 +1,14 @@
 import { Navbar, Footer } from '@/components/layout/navbar-footer'
 import { BigDataIndicator } from '@/components/ui'
+import { AccountShell } from '@/components/account/account-shell'
 
 export default function AccountLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
       <BigDataIndicator />
-      <div className="pt-24 px-6 md:px-10 max-w-[1100px] mx-auto pb-20 min-h-screen">
-        {children}
-      </div>
-      <Footer />
+      <AccountShell>{children}</AccountShell>
+      {/* <Footer /> */}
     </>
   )
 }

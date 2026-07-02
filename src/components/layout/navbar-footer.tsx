@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui'
 import { AccountMenu } from '@/components/layout/account-menu'
 
@@ -54,8 +55,10 @@ export function Navbar() {
 
       <div className="flex items-center gap-2">
         <AccountMenu />
-        <Link href="/auth/shop-register">
-          <Button size="sm">ثبت فروشگاه رایگان</Button>
+        <Link href="/auth/shop-register" title="ثبت فروشگاه رایگان">
+          <Button size="sm" className="px-2.5" aria-label="ثبت فروشگاه رایگان">
+            <Plus className="h-4 w-4" />
+          </Button>
         </Link>
       </div>
     </nav>

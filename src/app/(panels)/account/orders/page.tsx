@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { Package, ChevronLeft } from 'lucide-react'
 import { Pill } from '@/components/ui'
 
 function formatToman(n: number) {
@@ -10,7 +11,7 @@ function formatToman(n: number) {
 
 const statusConfig: Record<string, { label: string; color: 'blue' | 'orange' | 'green' | 'red' | 'muted' }> = {
   pending_shop: { label: 'منتظر تأیید فروشنده', color: 'orange' },
-  on_the_way: { label: 'در راه است 🛵', color: 'blue' },
+  on_the_way: { label: 'در راه است', color: 'blue' },
   delivered: { label: 'تحویل شده', color: 'green' },
   completed: { label: 'تکمیل شده', color: 'green' },
   cancelled: { label: 'لغو شده', color: 'red' },
@@ -43,7 +44,10 @@ export default function OrdersPage() {
   return (
     <div className="flex flex-col gap-5">
       <div>
-        <h1 className="font-display text-2xl md:text-3xl font-bold">سفارشات من</h1>
+        <h1 className="font-display text-2xl md:text-3xl font-bold flex items-center gap-2">
+          <Package className="h-7 w-7 text-purple-light" />
+          سفارشات من
+        </h1>
         <p className="text-sm text-muted mt-1">تاریخچه کامل خریدها و سفارشات جاری</p>
       </div>
 
@@ -68,22 +72,23 @@ export default function OrdersPage() {
             <Link
               key={order.id}
               href={`/account/orders/${order.id}`}
-              className={`flex items-center gap-3 px-4 py-3.5 hover:bg-purple/3 transition-colors block ${
+              className={`flex items-center gap-3 px-4 py-3.5 hover:bg-purple/3 transition-colors ${
                 i < filtered.length - 1 ? 'border-b border-purple/5' : ''
               }`}
             >
-              <div className="w-9 h-9 bg-purple/10 rounded-lg flex items-center justify-center text-[10px] font-bold text-purple-light flex-shrink-0">
-                #{order.id.split('-')[1]}
+              <div className="w-9 h-9 bg-purple/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Package className="h-4 w-4 text-purple-light" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold truncate">{order.items}</div>
-                <div className="text-[11px] text-muted">{order.shop}</div>
+                <div className="text-[11px] text-muted">{order.shop} · #{order.id.split('-')[1]}</div>
               </div>
               <div className="text-left flex-shrink-0">
                 <div className="text-[13px] font-bold">{formatToman(order.total)} ت</div>
                 <div className="text-[10px] text-muted2">{order.date}</div>
               </div>
               <Pill color={sc.color}>{sc.label}</Pill>
+              <ChevronLeft className="h-4 w-4 text-muted2 shrink-0 hidden sm:block" />
             </Link>
           )
         })}

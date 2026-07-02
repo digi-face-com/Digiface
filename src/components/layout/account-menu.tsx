@@ -22,12 +22,12 @@ export function AccountMenu() {
   const [loggingOut, setLoggingOut] = useState(false)
 
   if (loading) {
-    return <Skeleton className="hidden sm:block h-9 w-[88px] rounded-lg bg-white/[0.10] opacity-80" />
+    return <Skeleton className="h-9 w-[88px] rounded-lg bg-white/[0.10] opacity-80" />
   }
 
   if (!isAuthenticated || !user) {
     return (
-      <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-[13px] font-semibold hover:bg-transparent">
+      <Button variant="ghost" size="sm" className="inline-flex text-[13px] font-semibold hover:bg-transparent">
         <Link href="/auth/login" className="hover:bg-transparent">ورود</Link>
       </Button>
     )
@@ -53,7 +53,7 @@ export function AccountMenu() {
         <Button
           variant="outline"
           size="sm"
-          className="hidden sm:inline-flex min-w-[96px] max-w-[160px] border-purple/20 bg-purple/5 hover:bg-purple/10"
+          className="inline-flex min-w-0 max-w-[120px] sm:min-w-[96px] sm:max-w-[160px] border-purple/20 bg-purple/5 hover:bg-purple/10 px-2 sm:px-3"
           disabled={loggingOut}
         >
           <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-purple to-purple-2 text-[10px] font-bold text-white">
