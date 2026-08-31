@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>مستندات فرانت‌اند — DiGiFACE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#7c3aed; --purple-dark:#4c1d95; --gold:#c9973a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Vazirmatn',Tahoma,sans-serif;
+    background:#fff; color:#211c33; line-height:1.9; font-size:14.5px;
+    margin:0; padding:0;
+  }
+  .page{max-width:900px;margin:0 auto;padding:0 40px;}
+  .cover{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    background:linear-gradient(160deg,#0f1e14 0%,#0b2e1c 45%,#0a1a12 100%);
+    color:#fff; text-align:center; padding:60px 40px; page-break-after:always;
+  }
+  .cover .tag{ color:#c9973a; letter-spacing:3px; font-size:13px; font-weight:700; margin-bottom:18px;}
+  .cover h1{ font-size:44px; margin:0 0 10px; font-weight:900;}
+  .cover h2{ font-size:20px; font-weight:500; color:#cfead9; margin:0 0 40px;}
+  .cover .meta{ font-size:12.5px; color:#8fb99e; border-top:1px solid rgba(255,255,255,.15); padding-top:18px; margin-top:30px;}
+  h1{ color:var(--purple-dark); font-size:26px; border-bottom:3px solid var(--purple); padding-bottom:10px; margin-top:55px; page-break-before:always;}
+  h1:first-of-type{page-break-before:avoid;}
+  h2{ color:#3b1f6e; font-size:19px; margin-top:36px; border-right:4px solid var(--gold); padding-right:12px;}
+  h3{ color:#5b21b6; font-size:15.5px; margin-top:24px;}
+  p{margin:10px 0;}
+  code{background:#f3f0fa;color:#5b21b6;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;direction:ltr;display:inline-block;}
+  pre{background:#1a1626;color:#e5e0f5;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:12.5px;direction:ltr;text-align:left;line-height:1.6;margin:14px 0;}
+  pre code{background:none;color:inherit;padding:0;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+  th{background:var(--purple-dark);color:#fff;padding:8px 10px;text-align:right;}
+  td{padding:7px 10px;border-bottom:1px solid #e5e0f5;vertical-align:top;}
+  tr:nth-child(even) td{background:#faf8ff;}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;}
+  .b-live{background:#dcfce7;color:#15803d;}
+  .b-mock{background:#fef3c7;color:#92400e;}
+  .note{background:#f3f0fa;border-right:4px solid var(--purple);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:13.5px;}
+  .ok{background:#f0fdf4;border-right:4px solid #22c55e;padding:12px 16px;border-radius:8px;margin:16px 0;font-size:13.5px;}
+  ul,ol{padding-right:22px;}
+  li{margin:5px 0;}
+  .toc{background:#faf8ff;border:1px solid #e5e0f5;border-radius:12px;padding:20px 26px;margin:30px 0;}
+  .toc ol{counter-reset:item;list-style:none;padding-right:0;}
+  .toc li{margin:8px 0;font-weight:600;color:#5b21b6;}
+  .model-card{border:1px solid #e5e0f5;border-radius:12px;padding:16px 20px;margin:14px 0;background:#fdfcff;}
+  .model-card h4{margin:0 0 6px;color:var(--purple-dark);font-size:15px;}
+  .fields{font-size:12.5px;color:#444;}
+  .footer-note{text-align:center;color:#9d95b8;font-size:11px;margin:60px 0 20px;}
+  .swatch{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:middle;margin-left:6px;border:1px solid #0002;}
+  @media print{ .cover{page-break-after:always;} h1{page-break-before:always;} }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="tag">مستندات فنی پروژه</div>
+  <h1>DiGiFACE</h1>
+  <h2>تحلیل کامل فرانت‌اند، صفحات و کامپوننت‌ها</h2>
+  <div class="meta">مارکت‌پلیس تخصصی آرایشی و بهداشتی ایران&nbsp;&nbsp;|&nbsp;&nbsp;Next.js 14 (App Router) · TypeScript · Tailwind CSS<br>تهیه‌شده توسط Claude — بر اساس بررسی کد ریپازیتوری mohammadf11/Digiface (شاخه main)</div>
+</div>
+
+<div class="page">
+
+<div class="toc">
+<b>فهرست مطالب</b>
+<ol>
+<li>۱. پشتهٔ فناوری و اصول طراحی</li>
+<li>۲. ساختار مسیرها (Routing) و گروه‌بندی صفحات</li>
+<li>۳. فهرست کامل صفحات به تفکیک بخش</li>
+<li>۴. کامپوننت‌های پایه UI</li>
+<li>۵. کامپوننت‌های مشترک و ویژه</li>
+<li>۶. مدیریت وضعیت و ارتباط با سرور</li>
+<li>۷. کنترل دسترسی سمت کلاینت (RBAC)</li>
+<li>۸. سیستم طراحی (تم، رنگ، تایپوگرافی، RTL)</li>
+<li>۹. وضعیت اتصال هر بخش به بک‌اند واقعی</li>
+<li>۱۰. جمع‌بندی و پیشنهادات</li>
+</ol>
+</div>
+
+<h1>۱. پشتهٔ فناوری و اصول طراحی</h1>
+<table>
+<tr><th>مورد</th><th>جزئیات</th></tr>
+<tr><td>فریم‌ورک</td><td>Next.js 14 — App Router، ترکیبی از Server و Client Components</td></tr>
+<tr><td>زبان</td><td>TypeScript</td></tr>
+<tr><td>استایل‌دهی</td><td>Tailwind CSS با کلاس‌های Utility مستقیم داخل JSX (بدون CSS جداگانه به‌جز <code>globals.css</code>)</td></tr>
+<tr><td>جهت متن</td><td>راست‌به‌چپ (<code>dir="rtl"</code> در <code>&lt;html&gt;</code> ریشه)</td></tr>
+<tr><td>فونت‌ها</td><td><b>Vazirmatn</b> (فونت اصلی فارسی، وزن‌های ۳۰۰ تا ۹۰۰) و <b>Cormorant Garamond</b> (فونت نمایشی/تزئینی لاتین برای عناوین Brand)</td></tr>
+<tr><td>آیکون</td><td><code>lucide-react</code></td></tr>
+<tr><td>اعلان‌ها (Toast)</td><td><code>sonner</code></td></tr>
+<tr><td>معماری کامپوننت</td><td>اکثر صفحات <code>'use client'</code> هستند و state محلی (<code>useState</code>) دارند؛ داده‌ها عمدتاً هنوز آرایه/آبجکت‌های نمونه (mock) داخل خود فایل صفحه هستند</td></tr>
+</table>
+
+<h1>۲. ساختار مسیرها (Routing) و گروه‌بندی صفحات</h1>
+<p>پروژه از قابلیت <b>Route Groups</b> نکست‌جی‌اس (پرانتزهای <code>()</code> که در URL ظاهر نمی‌شوند) برای تفکیک منطقی بخش‌های سایت استفاده می‌کند:</p>
+<pre>src/app/
+├── (mainsite)/     سایت عمومی — بدون نیاز به ورود
+│   ├── page.tsx                لندینگ اصلی
+│   ├── shops/                  فهرست و صفحهٔ فروشگاه
+│   ├── boxes/                  فهرست باکس‌ها
+│   ├── search/                 نتایج جستجو
+│   ├── cart/                   سبد خرید
+│   ├── auth/                   ورود / ثبت‌نام / ثبت‌نام فروشگاه
+│   └── b2b/                    لندینگ کاربر ویژه (فاز ۲)
+│
+├── (panels)/       پنل‌های نیازمند ورود، هرکدام محافظت‌شده با middleware
+│   ├── account/                پنل مشتری عادی
+│   ├── shop-panel/              پنل فروشگاه
+│   ├── pick-app/                اپ پیک (موبایل-محور)
+│   └── admin/                   پنل مدیریت
+│
+├── api/            Route Handlerهای سمت سرور (به سند بک‌اند مراجعه شود)
+├── layout.tsx      Layout ریشه — بارگذاری فونت و تنظیم RTL
+└── middleware.ts   محافظت مسیر بر اساس نقش</pre>
+
+<h1>۳. فهرست کامل صفحات به تفکیک بخش</h1>
+
+<h2>۳.۱ سایت عمومی (mainsite)</h2>
+<table>
+<tr><th>مسیر</th><th>محتوا</th></tr>
+<tr><td><code>/</code></td><td>لندینگ: Hero، جست‌وجو، کمپین‌ها، باکس‌های ویژه، فوتر</td></tr>
+<tr><td><code>/shops</code></td><td>فهرست فروشگاه‌ها با فیلتر و کارت‌های <code>ShopCard</code></td></tr>
+<tr><td><code>/shops/[id]</code></td><td>صفحهٔ اختصاصی فروشگاه — کاور، پروفایل، تب محصولات/باکس‌ها، افزودن به سبد</td></tr>
+<tr><td><code>/boxes</code></td><td>فهرست باکس‌های تخفیفی همهٔ فروشگاه‌ها</td></tr>
+<tr><td><code>/search</code></td><td>نتایج جستجو با سه سطح اولویت (طبق نام‌گذاری پروژه)</td></tr>
+<tr><td><code>/cart</code></td><td>سبد خرید، انتخاب آدرس تحویل، منطق نمایش شرط همشهری/خارج‌شهر برای روش ارسال</td></tr>
+<tr><td><code>/auth/login</code></td><td>فرم ورود با یوزرنیم/موبایل + رمز عبور (متصل به API واقعی)</td></tr>
+<tr><td><code>/auth/register</code></td><td>ثبت‌نام سه‌مرحله‌ای: موبایل → کد تأیید → تکمیل پروفایل (متصل به API واقعی)</td></tr>
+<tr><td><code>/auth/shop-register</code></td><td>فرم درخواست عضویت فروشگاه</td></tr>
+<tr><td><code>/b2b</code></td><td>لندینگ معرفی کاربر ویژه/کارخانه (فاز ۲)</td></tr>
+</table>
+
+<h2>۳.۲ پنل کاربر — account</h2>
+<table>
+<tr><th>مسیر</th><th>محتوا</th></tr>
+<tr><td><code>/account</code></td><td>داشبورد خلاصهٔ کاربر</td></tr>
+<tr><td><code>/account/orders</code></td><td>فهرست سفارش‌ها با تب «همه / در جریان / تکمیل‌شده» و رنگ‌بندی وضعیت</td></tr>
+<tr><td><code>/account/addresses</code></td><td>مدیریت آدرس‌های تحویل</td></tr>
+<tr><td><code>/account/wallet</code></td><td>کیف پول و تراکنش‌ها</td></tr>
+</table>
+
+<h2>۳.۳ پنل فروشگاه — shop-panel</h2>
+<table>
+<tr><th>مسیر</th><th>محتوا</th></tr>
+<tr><td><code>/shop-panel</code></td><td>داشبورد فروشگاه</td></tr>
+<tr><td><code>/shop-panel/products</code></td><td>مدیریت محصولات</td></tr>
+<tr><td><code>/shop-panel/boxes</code></td><td>مدیریت باکس‌ها</td></tr>
+<tr><td><code>/shop-panel/orders</code></td><td>سفارش‌های ورودی با تب‌بندی وضعیت، دکمهٔ تأیید/رد، تایمر مهلت پاسخ (۷ ساعت همشهری / ۳۶ ساعت خارج‌شهر)</td></tr>
+<tr><td><code>/shop-panel/campaigns</code></td><td>پیوستن به کمپین‌های تخفیف</td></tr>
+<tr><td><code>/shop-panel/wallet</code></td><td>کیف پول فروشگاه</td></tr>
+<tr><td><code>/shop-panel/support</code></td><td>تیکت پشتیبانی</td></tr>
+</table>
+
+<h2>۳.۴ اپ پیک — pick-app (طراحی موبایل‌محور)</h2>
+<table>
+<tr><th>مسیر</th><th>محتوا</th></tr>
+<tr><td><code>/pick-app</code></td><td>سفارش‌های در دسترس در محدودهٔ پیک، با دکمهٔ «پذیرش سفارش»</td></tr>
+<tr><td><code>/pick-app/my-orders</code></td><td>سفارش جاری پیک با دو مرحله: تحویل‌گرفتن از فروشگاه (وارد کردن کد سفارش) → تحویل به مشتری؛ همچنین امکان ثبت «عودت»</td></tr>
+<tr><td><code>/pick-app/wallet</code></td><td>کیف پول پیک</td></tr>
+</table>
+
+<h2>۳.۵ پنل ادمین — admin</h2>
+<table>
+<tr><th>مسیر</th><th>محتوا</th></tr>
+<tr><td><code>/admin</code></td><td>داشبورد کلی</td></tr>
+<tr><td><code>/admin/cities</code></td><td>مدیریت شهرها و سرویس‌های حمل</td></tr>
+<tr><td><code>/admin/shops</code></td><td>بررسی و تأیید/رد فروشگاه‌ها</td></tr>
+<tr><td><code>/admin/picks</code></td><td>بررسی و تأیید/رد پیک‌ها</td></tr>
+<tr><td><code>/admin/violations</code></td><td>رسیدگی به گزارش‌های تخلف</td></tr>
+<tr><td><code>/admin/campaigns</code></td><td>ساخت و مدیریت کمپین‌ها</td></tr>
+<tr><td><code>/admin/tickets</code></td><td>رسیدگی به تیکت‌های پشتیبانی</td></tr>
+</table>
+
+<h1>۴. کامپوننت‌های پایه UI</h1>
+<p>در مسیر <code>src/components/ui/</code> مجموعه‌ای از کامپوننت‌های اتمی و قابل‌استفادهٔ مجدد قرار دارند:</p>
+<table>
+<tr><th>کامپوننت</th><th>کاربرد</th></tr>
+<tr><td><code>Button</code></td><td>دکمهٔ اصلی سیستم با پشتیبانی از حالت <code>loading</code>، اندازه‌های مختلف (<code>sm</code>/<code>lg</code>) و ادغام کلاس با <code>class-variance-authority</code>/<code>tailwind-merge</code></td></tr>
+<tr><td><code>Card</code></td><td>قاب پایهٔ محتوا با پس‌زمینهٔ تیره و border ظریف بنفش</td></tr>
+<tr><td><code>Pill</code></td><td>برچسب رنگی کوچک برای نمایش وضعیت (سبز/آبی/نارنجی/قرمز/خاکستری) — در سراسر پروژه برای وضعیت سفارش/تخلف/کمپین استفاده می‌شود</td></tr>
+<tr><td><code>Timer</code></td><td>نمایشگر شمارش‌معکوس مهلت (SLA) با حالت <code>urgent</code> برای زمان‌های بحرانی (رنگ قرمز هشدار)</td></tr>
+<tr><td><code>Toggle</code></td><td>سوییچ روشن/خاموش، برای تنظیمات پنل‌ها</td></tr>
+<tr><td><code>AiBadge</code></td><td>نشان کوچک برای علامت‌گذاری محتوای پردازش‌شده توسط هوش مصنوعی</td></tr>
+</table>
+
+<h1>۵. کامپوننت‌های مشترک و ویژه</h1>
+<div class="model-card"><h4>Navbar / Footer</h4><div class="fields">هدر و فوتر مشترک سایت عمومی، در <code>components/layout/navbar-footer.tsx</code>؛ شامل لینک‌های اصلی و وضعیت ورود کاربر.</div></div>
+<div class="model-card"><h4>ShopCard / BoxCard</h4><div class="fields">کارت نمایشی فروشگاه و باکس با افکت Hover (سایهٔ بنفش، ترنسفورم بالا)، امتیاز ستاره‌ای، تعداد نظرات و برچسب‌های ویژه (مثل «برتر»).</div></div>
+<div class="model-card"><h4>Chatbot</h4><div class="fields">کامپوننت گفت‌وگوی هوشمند شناور، در <code>components/shared/Chatbot.tsx</code> — رابط کاربری چت‌بات پشتیبانی/راهنما.</div></div>
+<div class="model-card"><h4>ScoreBadge</h4><div class="fields">نمایش امتیاز و سطح کاربر (Bronze/Silver/Gold/Platinum) مطابق فیلد <code>tier</code> در مدل <code>User</code>.</div></div>
+<div class="model-card"><h4>BigDataIndicator</h4><div class="fields">نشانگر بصری کوچک که احتمالاً برای اطلاع‌رسانی «این بخش بر اساس تحلیل رفتار شما شخصی‌سازی شده» استفاده می‌شود؛ متناظر با مدل <code>BehaviorLog</code> در بک‌اند.</div></div>
+
+<h1>۶. مدیریت وضعیت و ارتباط با سرور</h1>
+
+<h2>۶.۱ AuthContext</h2>
+<p>در <code>src/context/auth-context.tsx</code> یک Context عمومی برای وضعیت ورود کاربر تعریف شده که مقادیر زیر را در کل درخت کامپوننت در دسترس قرار می‌دهد:</p>
+<table>
+<tr><th>مقدار</th><th>توضیح</th></tr>
+<tr><td><code>user</code></td><td>پروفایل کاربر جاری یا <code>null</code></td></tr>
+<tr><td><code>loading</code></td><td>وضعیت بارگذاری اولیهٔ سشن</td></tr>
+<tr><td><code>isAuthenticated</code></td><td>مقدار Boolean مشتق‌شده</td></tr>
+<tr><td><code>refreshUser()</code></td><td>واکشی دوبارهٔ <code>/api/auth/me</code></td></tr>
+<tr><td><code>logout()</code></td><td>فراخوانی <code>/api/auth/logout</code> و پاک‌سازی state محلی</td></tr>
+</table>
+<p>این Context در بارگذاری اولیهٔ اپ، خودکار به <code>/api/auth/me</code> درخواست می‌زند تا اگر کوکی سشن معتبر باشد، وضعیت ورود بازیابی شود — یعنی رفرش صفحه کاربر را خارج نمی‌کند.</p>
+
+<h2>۶.۲ لایهٔ apiFetch</h2>
+<p><code>src/lib/api-client.ts</code> یک Wrapper سبک روی <code>fetch</code> است که:</p>
+<ul>
+<li>در صورت خطای شبکه یا پاسخ ناموفق، به‌صورت خودکار Toast خطا (<code>sonner</code>) نمایش می‌دهد (قابل غیرفعال‌سازی با <code>toastOnError:false</code>)</li>
+<li>یک کلاس اختصاصی <code>ApiError</code> (شامل <code>status</code>) پرتاب می‌کند تا کامپوننت‌ها بتوانند بر اساس کد وضعیت رفتار متفاوت نشان دهند (مثلاً برای ۴۰۹ در ثبت‌نام، دکمهٔ میان‌بر «ورود» در Toast نمایش داده می‌شود)</li>
+<li>امکان تعریف پیام خطای پیش‌فرض فارسی (<code>fallbackError</code>) به ازای هر درخواست را می‌دهد</li>
+</ul>
+
+<h2>۶.۳ الگوی مدیریت داده در صفحات</h2>
+<div class="note">
+تقریباً تمام صفحات پنل‌ها (سفارش‌ها، محصولات، کیف پول، تیکت‌ها و...) در حال حاضر از آرایه‌های JavaScript ثابت داخل خود فایل کامپوننت به‌عنوان دادهٔ نمونه استفاده می‌کنند (مثال: آرایهٔ <code>orders</code> در <code>account/orders/page.tsx</code>) و تعامل با آن‌ها (پذیرش سفارش، تغییر وضعیت) صرفاً <code>useState</code> محلی مرورگر را تغییر می‌دهد و به سرور نوشته نمی‌شود. تنها استثناها صفحات <b>ورود</b> و <b>ثبت‌نام</b> هستند که واقعاً با <code>apiFetch</code> به API متصل‌اند.
+</div>
+
+<h1>۷. کنترل دسترسی سمت کلاینت (RBAC)</h1>
+<p>در کنار <code>middleware.ts</code> (که در سطح سرور مسیرها را کنترل می‌کند)، فایل <code>lib/auth/roles.ts</code> دو قاعدهٔ ساده را تعریف می‌کند که در کامپوننت‌های فرانت هم استفاده می‌شود:</p>
+<pre>ADMIN_ROLES = ['ADMIN', 'SUPER_ADMIN']
+
+isAdminRole(role)           // آیا نقش ادمین است؟
+canAccessAccountPanel(role) // هر نقشی به‌جز ادمین</pre>
+<p>برای مثال در <code>LoginForm</code>، پس از ورود موفق، اگر نقش کاربر ادمین باشد و مقصد پیش‌فرض صفحهٔ کاربری بوده، به‌جای آن به <code>/admin</code> هدایت می‌شود.</p>
+
+<h1>۸. سیستم طراحی (تم، رنگ، تایپوگرافی، RTL)</h1>
+<table>
+<tr><th>عنصر</th><th>مقدار</th></tr>
+<tr><td>رنگ اصلی برند</td><td><span class="swatch" style="background:#7c3aed"></span> بنفش (Purple) <code>#7c3aed</code></td></tr>
+<tr><td>رنگ تزئینی</td><td><span class="swatch" style="background:#c9973a"></span> طلایی (Gold) <code>#c9973a</code></td></tr>
+<tr><td>پس‌زمینهٔ پایه</td><td><span class="swatch" style="background:#0e0b16;border-color:#555"></span> بنفش تیرهٔ نزدیک به مشکی (Dark Mode ثابت)</td></tr>
+<tr><td>رنگ‌های وضعیت</td><td>سبز (موفق/تحویل‌شده)، آبی (در حال انجام)، نارنجی (در انتظار)، قرمز (لغو/خطا)</td></tr>
+<tr><td>فونت متن فارسی</td><td>Vazirmatn — پشتیبانی کامل از اعداد و حروف فارسی/عربی</td></tr>
+<tr><td>فونت نمایشی</td><td>Cormorant Garamond — برای عنوان برند «DiGiFACE» و تیترهای تزئینی</td></tr>
+<tr><td>جهت (Direction)</td><td>کل اپلیکیشن RTL؛ حتی مقادیر عددی/انگلیسی (مثل کد سفارش) با <code>dir="ltr"</code> موضعی نمایش داده می‌شوند تا خوانا بمانند</td></tr>
+<tr><td>واحد پول</td><td>تومان، با فرمت جداکنندهٔ هزارگان فارسی از طریق <code>toLocaleString('fa-IR')</code></td></tr>
+</table>
+<p>ظاهر کلی پنل مشتری/فروشگاه با گرادیان بنفش (<code>#1e0d38 → #2d1060</code>) و ظاهر اپ پیک با گرادیان سبز تیره (<code>#0a1a12</code>) طراحی شده تا از نظر بصری این دو محیط از هم متمایز باشند.</p>
+
+<h1>۹. وضعیت اتصال هر بخش به بک‌اند واقعی</h1>
+<table>
+<tr><th>بخش</th><th>وضعیت</th></tr>
+<tr><td>ورود / ثبت‌نام / خروج / دریافت کاربر جاری</td><td><span class="badge b-live">متصل به API واقعی</span></td></tr>
+<tr><td>محافظت مسیر بر اساس نقش (middleware)</td><td><span class="badge b-live">فعال و واقعی</span></td></tr>
+<tr><td>لندینگ، فهرست فروشگاه‌ها/باکس‌ها، جست‌وجو</td><td><span class="badge b-mock">دادهٔ نمایشی ثابت</span></td></tr>
+<tr><td>سبد خرید و پرداخت</td><td><span class="badge b-mock">دادهٔ نمایشی ثابت</span></td></tr>
+<tr><td>پنل کاربر (سفارش‌ها، آدرس‌ها، کیف‌پول)</td><td><span class="badge b-mock">دادهٔ نمایشی ثابت</span></td></tr>
+<tr><td>پنل فروشگاه (تمام زیرصفحات)</td><td><span class="badge b-mock">دادهٔ نمایشی ثابت</span></td></tr>
+<tr><td>اپ پیک (تمام زیرصفحات)</td><td><span class="badge b-mock">دادهٔ نمایشی ثابت</span></td></tr>
+<tr><td>پنل ادمین (تمام زیرصفحات)</td><td><span class="badge b-mock">دادهٔ نمایشی ثابت</span></td></tr>
+</table>
+<div class="ok">این جدول برای برنامه‌ریزی فاز بعدی توسعه بسیار کاربردی است: طراحی بصری و تجربهٔ کاربری تقریباً کامل است، اما اتصال داده‌محور (Data Layer) باید صفحه‌به‌صفحه به API واقعی وصل شود.</div>
+
+<h1>۱۰. جمع‌بندی و پیشنهادات</h1>
+<ul>
+<li>ساختار پوشه‌بندی و Route Groups تمیز و مقیاس‌پذیر است و از همان ابتدا برای چهار نوع کاربر متفاوت طراحی شده.</li>
+<li>لایهٔ Auth (Context + apiFetch + middleware) الگوی خوبی برای گسترش به بقیهٔ بخش‌ها فراهم کرده؛ توصیه می‌شود همین الگو (Context اختصاصی + apiFetch) برای سبد خرید، سفارش‌ها و کیف‌پول هم تکرار شود.</li>
+<li>پیشنهاد می‌شود دادهٔ نمونهٔ هر صفحه به یک لایهٔ <code>hooks</code> (مثل <code>useOrders()</code>) منتقل شود تا جایگزینی بعدی با فراخوانی API واقعی، بدون تغییر در JSX کامپوننت‌ها ممکن باشد.</li>
+<li>با توجه به وجود سه محیط بصری متفاوت (سایت عمومی، پنل‌های بنفش، اپ پیک سبز)، مقادیر رنگ به‌صورت پراکنده در کلاس‌های Tailwind تکرار شده‌اند؛ متمرکز کردن آن‌ها در <code>tailwind.config.ts</code> و <code>styles/theme.ts</code> نگهداری آینده را ساده‌تر می‌کند.</li>
+</ul>
+
+<div class="footer-note">پایان مستندات فرانت‌اند · DiGiFACE · تهیه‌شده بر اساس بررسی مستقیم کد ریپازیتوری</div>
+
+</div>
+</body>
+</html>
