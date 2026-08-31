@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>مستندات بک‌اند — DiGiFACE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#7c3aed; --purple-dark:#4c1d95; --gold:#c9973a;
+    --bg:#0e0b16; --card:#161225; --border:#2a2440;
+    --text:#eee; --muted:#9d95b8; --green:#22c55e; --red:#ef4444; --blue:#3b82f6; --orange:#f59e0b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Vazirmatn',Tahoma,sans-serif;
+    background:#fff; color:#211c33; line-height:1.9; font-size:14.5px;
+    margin:0; padding:0;
+  }
+  .page{max-width:900px;margin:0 auto;padding:0 40px;}
+  .cover{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    background:linear-gradient(160deg,#1e0d38 0%,#2d1060 45%,#1e0a28 100%);
+    color:#fff; text-align:center; padding:60px 40px; page-break-after:always;
+  }
+  .cover .tag{ color:#c9973a; letter-spacing:3px; font-size:13px; font-weight:700; margin-bottom:18px;}
+  .cover h1{ font-size:44px; margin:0 0 10px; font-weight:900;}
+  .cover h2{ font-size:20px; font-weight:500; color:#d7cdf5; margin:0 0 40px;}
+  .cover .meta{ font-size:12.5px; color:#9d95b8; border-top:1px solid rgba(255,255,255,.15); padding-top:18px; margin-top:30px;}
+  h1{ color:var(--purple-dark); font-size:26px; border-bottom:3px solid var(--purple); padding-bottom:10px; margin-top:55px; page-break-before:always;}
+  h1:first-of-type{page-break-before:avoid;}
+  h2{ color:#3b1f6e; font-size:19px; margin-top:36px; border-right:4px solid var(--gold); padding-right:12px;}
+  h3{ color:#5b21b6; font-size:15.5px; margin-top:24px;}
+  p{margin:10px 0;}
+  code{background:#f3f0fa;color:#5b21b6;padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;direction:ltr;display:inline-block;}
+  pre{background:#1a1626;color:#e5e0f5;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:12.5px;direction:ltr;text-align:left;line-height:1.6;margin:14px 0;}
+  pre code{background:none;color:inherit;padding:0;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+  th{background:var(--purple-dark);color:#fff;padding:8px 10px;text-align:right;}
+  td{padding:7px 10px;border-bottom:1px solid #e5e0f5;vertical-align:top;}
+  tr:nth-child(even) td{background:#faf8ff;}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;}
+  .b-live{background:#dcfce7;color:#15803d;}
+  .b-plan{background:#fee2e2;color:#b91c1c;}
+  .b-mock{background:#fef3c7;color:#92400e;}
+  .note{background:#f3f0fa;border-right:4px solid var(--purple);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:13.5px;}
+  .warn{background:#fef2f2;border-right:4px solid var(--red);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:13.5px;}
+  .ok{background:#f0fdf4;border-right:4px solid var(--green);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:13.5px;}
+  ul,ol{padding-right:22px;}
+  li{margin:5px 0;}
+  .toc{background:#faf8ff;border:1px solid #e5e0f5;border-radius:12px;padding:20px 26px;margin:30px 0;}
+  .toc a{color:#5b21b6;text-decoration:none;font-weight:600;}
+  .toc ol{counter-reset:item;list-style:none;padding-right:0;}
+  .toc li{margin:8px 0;}
+  .model-card{border:1px solid #e5e0f5;border-radius:12px;padding:16px 20px;margin:14px 0;background:#fdfcff;}
+  .model-card h4{margin:0 0 6px;color:var(--purple-dark);font-size:15px;}
+  .fields{font-size:12.5px;color:#444;}
+  .footer-note{text-align:center;color:#9d95b8;font-size:11px;margin:60px 0 20px;}
+  @media print{ .cover{page-break-after:always;} h1{page-break-before:always;} }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="tag">مستندات فنی پروژه</div>
+  <h1>DiGiFACE</h1>
+  <h2>تحلیل کامل بک‌اند، معماری API و دیتابیس</h2>
+  <div class="meta">مارکت‌پلیس تخصصی آرایشی و بهداشتی ایران&nbsp;&nbsp;|&nbsp;&nbsp;Next.js 14 · Prisma · MySQL/PostgreSQL<br>تهیه‌شده توسط Claude — بر اساس بررسی کد ریپازیتوری mohammadf11/Digiface (شاخه main)</div>
+</div>
+
+<div class="page">
+
+<div class="toc">
+<b>فهرست مطالب</b>
+<ol>
+<li>۱. معرفی کلی و پشته فناوری</li>
+<li>۲. معماری کلی پروژه</li>
+<li>۳. تحلیل کامل دیتابیس (Schema)</li>
+<li>۴. سیستم احراز هویت (Auth)</li>
+<li>۵. نقشه کامل API — پیاده‌سازی‌شده در برابر برنامه‌ریزی‌شده</li>
+<li>۶. منطق‌های کسب‌وکار کدگذاری‌شده در دیتابیس</li>
+<li>۷. امنیت، ریسک‌ها و نکات فنی</li>
+<li>۸. راهنمای دیپلوی</li>
+<li>۹. جمع‌بندی و پیشنهادات بعدی</li>
+</ol>
+</div>
+
+<h1>۱. معرفی کلی و پشته فناوری</h1>
+<p>
+DiGiFACE یک مارکت‌پلیس تخصصی محصولات آرایشی و بهداشتی است که سه نقش اصلی سمت عرضه/تقاضا را به هم وصل می‌کند: <b>مشتری</b>، <b>فروشگاه</b> و <b>پیک (تحویل‌دهنده)</b>، به‌علاوه یک پنل <b>ادمین</b> برای نظارت و یک لایه <b>هوش مصنوعی</b> برای تصمیم‌گیری‌های خودکار (تأیید محصول، دسته‌بندی تیکت، تخمین اندازه بسته و پردازش سفارشات خارج‌شهر).
+</p>
+<table>
+<tr><th>لایه</th><th>فناوری</th></tr>
+<tr><td>فریم‌ورک</td><td><code>Next.js 14 (App Router)</code></td></tr>
+<tr><td>زبان</td><td><code>TypeScript</code></td></tr>
+<tr><td>ORM / دیتابیس</td><td><code>Prisma 5</code> روی <code>PostgreSQL</code> (به‌صورت provider در schema)؛ توضیحات پروژه اشاره به MySQL پارس‌پک دارد — به بخش ۷ مراجعه شود</td></tr>
+<tr><td>احراز هویت</td><td>JWT دست‌ساز با کتابخانه <code>jose</code> + کوکی httpOnly + هش رمز عبور با <code>bcryptjs</code></td></tr>
+<tr><td>استایل</td><td><code>Tailwind CSS</code> + فونت وزیرمتن (فارسی) و Cormorant Garamond</td></tr>
+<tr><td>UI کمکی</td><td><code>lucide-react</code>, <code>sonner</code> (toast), <code>class-variance-authority</code>, <code>tailwind-merge</code></td></tr>
+</table>
+
+<h1>۲. معماری کلی پروژه</h1>
+<p>پروژه به‌صورت یک اپلیکیشن Full-stack یکپارچه در Next.js نوشته شده؛ یعنی هم فرانت‌اند (صفحات React) و هم بک‌اند (API Routes زیر <code>src/app/api</code>) در یک ریپازیتوری هستند. ساختار پوشه‌بندی به‌صورت Route Groups سازمان‌دهی شده است:</p>
+<pre>src/app/
+├── (mainsite)/        صفحات عمومی: لندینگ، فروشگاه‌ها، سبد خرید، احراز هویت
+├── (panels)/           پنل‌های نقش‌محور: account, shop-panel, pick-app, admin
+├── api/                API Routes (سمت سرور)
+├── layout.tsx          Layout ریشه (فونت + RTL)
+└── middleware.ts       محافظت مسیر بر اساس نقش کاربر</pre>
+
+<h2>۲.۱ جریان یک درخواست</h2>
+<p>
+هر درخواست ورودی به مسیرهای <code>/account/*</code> یا <code>/admin/*</code> ابتدا از <code>middleware.ts</code> عبور می‌کند. میان‌افزار توکن Session را از کوکی می‌خواند، با <code>verifySessionTokenEdge</code> (نسخه سازگار با Edge Runtime از <code>jose</code>) اعتبارسنجی می‌کند و بر اساس نقش کاربر (<code>role</code>) تصمیم می‌گیرد که اجازه عبور بدهد، به صفحه لاگین ریدایرکت کند یا کاربر غیرمجاز را به مسیر مناسب نقش خودش بفرستد.
+</p>
+<p>
+درخواست‌های API از طریق <code>fetch</code> در سمت کلاینت (عمدتاً از طریق تابع کمکی <code>apiFetch</code>) ارسال می‌شوند، هندلر Route در <code>src/app/api/.../route.ts</code> پاسخ می‌دهد، و منطق دیتابیس از طریق Prisma Client مشترک (<code>src/lib/prisma.ts</code>) اجرا می‌شود.
+</p>
+
+<h2>۲.۲ لایه‌های کمکی (lib)</h2>
+<table>
+<tr><th>مسیر</th><th>وظیفه</th></tr>
+<tr><td><code>lib/prisma.ts</code></td><td>نمونهٔ singleton از PrismaClient</td></tr>
+<tr><td><code>lib/auth/session.ts</code></td><td>ساخت/اعتبارسنجی JWT سشن و توکن تأیید موبایل، تنظیم/پاک‌سازی کوکی httpOnly</td></tr>
+<tr><td><code>lib/auth/session-edge.ts</code></td><td>نسخه سبک اعتبارسنجی JWT برای اجرای middleware در Edge Runtime</td></tr>
+<tr><td><code>lib/auth/otp.ts</code></td><td>تولید/اعتبارسنجی کد یکبارمصرف (فعلاً کد ثابت تستی)</td></tr>
+<tr><td><code>lib/auth/password.ts</code></td><td>هش/مقایسهٔ رمز عبور با bcrypt (۱۲ راند)</td></tr>
+<tr><td><code>lib/auth/validation.ts</code></td><td>اعتبارسنجی/نرمال‌سازی شماره موبایل، یوزرنیم و رمز عبور</td></tr>
+<tr><td><code>lib/auth/roles.ts</code></td><td>تعریف نقش‌های ادمین و قوانین دسترسی به پنل‌ها</td></tr>
+<tr><td><code>lib/auth/guards.ts</code></td><td>گارد سمت سرور برای الزام سشن ادمین در API Routeها</td></tr>
+<tr><td><code>lib/auth/api.ts</code></td><td>پاسخ‌های استاندارد JSON (<code>jsonOk</code> / <code>jsonError</code>)</td></tr>
+<tr><td><code>lib/api-client.ts</code></td><td>Wrapper سمت کلاینت برای fetch با مدیریت خطا و toast خودکار</td></tr>
+</table>
+
+<h1>۳. تحلیل کامل دیتابیس (Prisma Schema)</h1>
+<p>
+دیتابیس شامل <b>۷ Enum</b> و <b>۲۹ مدل</b> است که در ۱۳ حوزهٔ کسب‌وکار (Domain) سازمان‌دهی شده‌اند. در ادامه هر حوزه به‌همراه هدف، فیلدهای کلیدی و روابط آن شرح داده شده است.
+</p>
+
+<h2>۳.۱ Enumها (مقادیر ثابت سیستمی)</h2>
+<table>
+<tr><th>Enum</th><th>مقادیر</th><th>کاربرد</th></tr>
+<tr><td><code>Role</code></td><td>CUSTOMER, SHOP, PICK, ADMIN, SUPER_ADMIN, B2B, SUPPLIER</td><td>نقش کاربر در سیستم (B2B و SUPPLIER برای فاز ۲ رزرو شده‌اند)</td></tr>
+<tr><td><code>UserTier</code></td><td>BRONZE, SILVER, GOLD, PLATINUM</td><td>سطح‌بندی کاربر بر اساس امتیاز (score) برای برنامهٔ وفاداری</td></tr>
+<tr><td><code>ShopStatus</code></td><td>PENDING_REVIEW, APPROVED, REJECTED, SUSPENDED</td><td>وضعیت بررسی فروشگاه (و به‌صورت مشترک برای پیک هم استفاده می‌شود)</td></tr>
+<tr><td><code>ProductStatus</code></td><td>PENDING_AI, APPROVED, REJECTED_AI, PENDING_ADMIN, OUT_OF_STOCK, ARCHIVED</td><td>گردش تأیید محصول توسط هوش مصنوعی/ادمین</td></tr>
+<tr><td><code>BoxStatus</code></td><td>ACTIVE, INACTIVE, PENDING_ADMIN_ITEM</td><td>وضعیت باکس‌های تخفیفی</td></tr>
+<tr><td><code>OrderStatus</code></td><td>۱۵ مقدار (از CART_SAVED تا ESCALATED_ADMIN) — جزئیات در بخش ۳.۷</td><td>ماشین‌حالت کامل چرخهٔ سفارش</td></tr>
+<tr><td><code>OrderType</code></td><td>LOCAL, INTERCITY</td><td>سفارش همشهری در برابر خارج‌شهر</td></tr>
+<tr><td><code>PackageSize</code></td><td>SMALL, MEDIUM, LARGE</td><td>اندازهٔ بسته (تخمین AI) — روی هزینهٔ حمل اثر می‌گذارد</td></tr>
+<tr><td><code>DeliveryMethod</code></td><td>PICK_MOTOR, PICK_CAR, POST, CARRIER, VAN, INTER_SHOP</td><td>روش ارسال سفارش</td></tr>
+<tr><td><code>PaymentMethod</code></td><td>ONLINE, WALLET, CHECK</td><td>روش پرداخت (CHECK برای کاربران ویژهٔ فاز ۲)</td></tr>
+<tr><td><code>TransactionType</code></td><td>DEPOSIT, WITHDRAWAL, ORDER_PAYMENT, COMMISSION, REFUND, PICK_FEE, PICK_FEE_PENALTY, PICK_PAYOUT</td><td>نوع تراکنش کیف پول</td></tr>
+<tr><td><code>WalletOwnerType</code></td><td>CUSTOMER, SHOP, PICK</td><td>مالک کیف پول</td></tr>
+<tr><td><code>ReviewType</code></td><td>GREAT, NORMAL, REPORT</td><td>نوع ارزیابی مشتری پس از تحویل</td></tr>
+<tr><td><code>ReportReason</code></td><td>NOT_DELIVERED, BAD_BEHAVIOR, WRONG_ITEM, DAMAGED, OTHER</td><td>دلیل گزارش تخلف</td></tr>
+<tr><td><code>TicketStatus / TicketCategory</code></td><td>ACTIVE/RESOLVED/ARCHIVED — ۸ دسته</td><td>مدیریت تیکت پشتیبانی</td></tr>
+<tr><td><code>CampaignStatus</code></td><td>DRAFT, ACTIVE, ENDED</td><td>وضعیت کمپین تخفیف</td></tr>
+<tr><td><code>NotificationChannel</code></td><td>IN_APP, SMS</td><td>کانال اعلان</td></tr>
+<tr><td><code>AddressLabel</code></td><td>HOME, WORK, OTHER</td><td>برچسب آدرس کاربر</td></tr>
+</table>
+
+<h2>۳.۲ کاربران و احراز هویت</h2>
+<div class="model-card">
+<h4>User</h4>
+<div class="fields">هستهٔ مرکزی کل سیستم. فیلدهای کلیدی: <code>phone</code> (یکتا، شناسهٔ اصلی ورود)، <code>phoneVerified</code>، <code>username</code> (یکتا)، <code>passwordHash</code>، <code>role</code>، <code>score</code> و <code>tier</code> (سیستم امتیازدهی)، <code>negativeBalance</code> (بدهی کاربر در صورت عودت سفارش با موجودی ناکافی کیف پول). هر کاربر بسته به نقش می‌تواند دقیقاً یکی از روابط اختیاری <code>shop</code>، <code>pick</code> یا <code>adminProfile</code> را داشته باشد (الگوی Table-per-role روی یک User مرکزی).</div>
+</div>
+<div class="model-card">
+<h4>OtpCode</h4>
+<div class="fields">کدهای یک‌بارمصرف پیامکی برای تأیید موبایل؛ هر رکورد <code>phone</code>, <code>code</code>, <code>expiresAt</code>, <code>used</code> دارد. با هر درخواست کد جدید، کدهای قبلی همان شماره حذف می‌شوند.</div>
+</div>
+<div class="model-card">
+<h4>Address</h4>
+<div class="fields">آدرس‌های چندگانهٔ هر کاربر با برچسب (خانه/محل کار/سایر)، مختصات جغرافیایی (<code>lat</code>/<code>lng</code>) برای محاسبهٔ فاصله و آدرس پیش‌فرض.</div>
+</div>
+<div class="model-card">
+<h4>ScoreHistory</h4>
+<div class="fields">تاریخچهٔ تغییرات امتیاز کاربر (<code>points</code> می‌تواند منفی باشد) با دلیل (خرید، ثبت‌نظر به‌موقع، معرفی دوست، تخلف و...) — مبنای محاسبهٔ Tier کاربر.</div>
+</div>
+
+<h2>۳.۳ شهر و زیرساخت حمل‌ونقل (مدیریت ادمین)</h2>
+<div class="model-card"><h4>City</h4><div class="fields">فهرست شهرهای فعال پلتفرم؛ به فروشگاه، پیک، سرویس‌های حمل و سفارش‌ها متصل است.</div></div>
+<div class="model-card"><h4>CarrierService</h4><div class="fields">سرویس‌های حمل بین‌شهری (پست ایران، الوپیک، تیپاکس و...) که ادمین به‌ازای هر شهر تعریف می‌کند؛ شامل زمان تخمینی تحویل و آدرس دفتر برای هماهنگی پیک منتخب.</div></div>
+<div class="model-card"><h4>BoxFilter</h4><div class="fields">فیلترهای تعریف‌شده توسط ادمین برای باکس‌ها به تفکیک شهر (اندازه، مبدأ برند، تعداد قلم و...).</div></div>
+
+<h2>۳.۴ فروشگاه، محصول و باکس</h2>
+<div class="model-card">
+<h4>Shop</h4>
+<div class="fields">پروفایل فروشگاه شامل مدارک (<code>licenseFileUrl</code>)، موقعیت جغرافیایی، وضعیت بررسی (<code>ShopStatus</code>) و دو نرخ کمیسیون جداگانه: <code>productCommission</code> (پیش‌فرض ۷٪) برای فروش محصول تکی و <code>boxCommission</code> (پیش‌فرض ۲۰٪) برای باکس. تغییر کمیسیون از طریق <code>pendingCommissionChange</code> (JSON) در انتظار تأیید فروشگاه می‌ماند — یعنی پلتفرم نمی‌تواند یک‌طرفه کمیسیون را تغییر دهد.</div>
+</div>
+<div class="model-card">
+<h4>Product</h4>
+<div class="fields">محصول متعلق به یک فروشگاه با گردش تأیید هوش مصنوعی (<code>status: PENDING_AI → APPROVED/REJECTED_AI</code>). اگر فروشنده روی محصولِ رد‌شده اصرار کند، <code>forceEditRequested</code> فعال شده و پرونده به ادمین ارجاع می‌شود (<code>PENDING_ADMIN</code>). ویرایش‌های بعدی در <code>pendingEdit</code> (JSON) صف می‌شوند و هر ویرایش جدید، ویرایش قبلی صف را جایگزین می‌کند. <code>isInStock=false</code> یعنی محصول به‌صورت خودکار از نتایج محو می‌شود بدون حذف رکورد.</div>
+</div>
+<div class="model-card">
+<h4>Box / BoxItem / BoxFilter</h4>
+<div class="fields">باکس، بستهٔ چند-محصولی تخفیف‌دار یک فروشگاه است (<code>originalPrice</code> در برابر <code>discountedPrice</code>). هر <code>BoxItem</code> یا به یک <code>Product</code> موجود اشاره می‌کند یا یک آیتم اختصاصی باکس است (<code>customName</code>/<code>customPrice</code>) که در این حالت نیاز به تأیید ادمین دارد (<code>needsAdminApproval</code>). فیلد <code>isInterShopEnabled</code> امکان می‌دهد باکس یک فروشگاه، در ویترین فروشگاه‌های دیگر هم قابل سفارش باشد (باکس بین‌فروشگاهی).</div>
+</div>
+
+<h2>۳.۵ کمپین‌ها</h2>
+<div class="model-card">
+<h4>Campaign / ShopCampaign</h4>
+<div class="fields"><code>Campaign</code> یک تخفیف زمان‌دار سراسری با <code>commissionPercent</code> ویژهٔ خودش است. فروشگاه‌ها باید صریحاً بپیوندند (<code>ShopCampaign.accepted</code>) و می‌توانند انتخاب کنند که کمپین روی همهٔ محصولاتشان اعمال شود (<code>appliesToAll</code>) یا فقط زیرمجموعه‌ای انتخابی (<code>selectedProductIds</code>).</div>
+</div>
+
+<h2>۳.۶ پیک (تحویل‌دهنده)</h2>
+<div class="model-card">
+<h4>Pick</h4>
+<div class="fields">پروفایل پیک با مدارک هویتی/خودرو، وضعیت بررسی مشترک با فروشگاه (<code>ShopStatus</code>)، و نرخ کمیسیون پلتفرم از پیک (پیش‌فرض ۱۶٪) که تغییرش نیازمند تأیید دومرحله‌ای پیک است (<code>commissionApproved</code>). دو پرچم انتخاب ویژه دارد: <code>isSelectedForIntercity</code> (پیک منتخب برای هماهنگی سفارش‌های خارج‌شهر) و <code>isSelectedForChecks</code> (برای کاربران چکی فاز ۲).</div>
+</div>
+
+<h2>۳.۷ سفارش — قلب سیستم</h2>
+<p>مدل <code>Order</code> پیچیده‌ترین بخش دیتابیس است و کل چرخهٔ عمر سفارش را به‌صورت یک ماشین‌حالت با ۱۵ وضعیت مدل می‌کند:</p>
+<pre>CART_SAVED → PENDING_SHOP → CONFIRMED → PICK_SEARCHING → PICK_ASSIGNED
+→ PICK_PICKED_UP → OUT_FOR_DELIVERY → DELIVERED → COMPLETED
+
+مسیرهای انحرافی:
+CANCELLED_BY_USER   (قبل از تأیید فروشگاه)
+CANCELLED_BY_SHOP   (رد توسط فروشگاه)
+PARTIALLY_FULFILLED (برخی اقلام حذف شد)
+RETURNED            (عودت توسط پیک)
+ESCALATED_ADMIN     (تایمر پاسخ‌گویی گذشت)
+INTERCITY_PROCESSING(در حال پردازش سفارش خارج‌شهر توسط AI/ادمین)</pre>
+<p>فیلدهای زمان‌بندی روی خود مدل <code>Order</code> نشان می‌دهند چند مهلت (SLA) به‌صورت خودکار روی سفارش اعمال می‌شود:</p>
+<ul>
+<li><b>تحویل پیک:</b> ۳ ساعت پس از تحویل‌گرفتن از فروشگاه (<code>pickDeliveredAt</code>)</li>
+<li><b>ارزیابی مشتری:</b> ۷ ساعت برای سفارش همشهری (با توقف بازهٔ ۷ شب تا ۸ صبح) یا ۹۶ ساعت برای خارج‌شهر (<code>reviewDeadline</code>)</li>
+<li><b>پشتیبانی سفارش:</b> تا ۱ هفته پس از ثبت قابل پیگیری است (<code>supportDeadline</code>)</li>
+</ul>
+<p>فیلد <code>pickContactMode</code> انتخاب می‌کند ارتباط مشتری و پیک از طریق پلتفرم (secure) باشد یا مستقیم. آیتم‌های سفارش (<code>OrderItem</code>) هرکدام به یک فروشگاه وصل‌اند؛ در سناریوی باکس بین‌فروشگاهی، <code>isInterShopFulfillment</code> و <code>fulfillingShopId</code> نشان می‌دهند کالا واقعاً توسط فروشگاه دیگری تأمین شده. <code>OrderItemProduct</code> نیز محصولات داخل هر باکس سفارش‌داده‌شده را ردیابی می‌کند.</p>
+
+<h2>۳.۸ ارسال خارج‌شهر</h2>
+<div class="model-card">
+<h4>Shipment</h4>
+<div class="fields">برای سفارش‌های <code>INTERCITY</code>. هزینه از فرمول <code>هزینهٔ پست محلی × ۱.۳ + هزینهٔ پلتفرم بین‌شهری</code> محاسبه می‌شود (<code>localPostCost</code>, <code>platformFee</code>, <code>totalCost</code>). <code>processedByAi</code> نشان می‌دهد آیا انتخاب مسیر/سرویس حمل توسط هوش مصنوعی خودکار انجام شده یا نه.</div>
+</div>
+
+<h2>۳.۹ ارزیابی و تخلفات</h2>
+<div class="model-card">
+<h4>Review</h4>
+<div class="fields">ارزیابی مشتری با سه حالت (GREAT/NORMAL/REPORT). اگر گزارش تخلف باشد، ادمین باید ظرف ۲۴ ساعت بررسی کند (<code>adminReviewed</code>). اگر سیستم نتواند خودکار جمع‌بندی کند، تماس کارشناس با ضبط مکالمه ثبت می‌شود (<code>callRecordingUrl</code>, <code>resolvedByCall</code>).</div>
+</div>
+<div class="model-card">
+<h4>ViolationReport</h4>
+<div class="fields">گزارش تخلف پیک یا مشتری، مستقل از Review، با فیلد <code>resolution</code> برای نتیجهٔ بررسی ادمین.</div>
+</div>
+
+<h2>۳.۱۰ کیف پول و تراکنش‌های مالی</h2>
+<div class="model-card">
+<h4>Wallet / Transaction / WithdrawalRequest</h4>
+<div class="fields">هر کیف پول دقیقاً به یکی از سه نوع مالک (مشتری/فروشگاه/پیک) متصل است. برای پیک، <code>grossEarnings</code> درآمد ناخالص را جدا از <code>balance</code> (موجودی خالص قابل برداشت) نگه می‌دارد. تغییر اطلاعات بانکی برای تسویه از مسیر تأیید دومرحله‌ای عبور می‌کند (<code>pendingBankChange</code>). هر <code>Transaction</code> یک <code>type</code> از هشت نوع ممکن دارد و <code>amount</code> می‌تواند منفی باشد (مثلاً برای برداشت یا کسر کمیسیون). درخواست برداشت وجه (<code>WithdrawalRequest</code>) گردش وضعیت ساده‌ای دارد: <code>pending → approved/rejected → paid</code>.</div>
+</div>
+
+<h2>۳.۱۱ تیکت پشتیبانی</h2>
+<div class="model-card">
+<h4>Ticket / TicketMessage</h4>
+<div class="fields">هر تیکت یک عنوان تولیدشده توسط AI (<code>aiTitle</code>) و یک دسته از ۸ دستهٔ ممکن دارد. پیام‌های داخل تیکت مشخص می‌کنند فرستنده کدام نقش بوده (<code>senderRole</code>) — بنابراین گفت‌وگوی چندنقشی (مشتری/فروشگاه/پیک/ادمین) در یک تیکت ممکن است.</div>
+</div>
+
+<h2>۳.۱۲ ادمین و ثبت رخدادها</h2>
+<div class="model-card">
+<h4>AdminProfile / AuditLog</h4>
+<div class="fields">دسترسی‌های هر ادمین به‌صورت JSON آزاد تعریف می‌شود (<code>permissions</code>) که انعطاف بالایی برای تعریف نقش‌های سفارشی می‌دهد؛ <code>isSuperAdmin</code> دسترسی کامل بدون محدودیت. تمام اقدامات حساس ادمین (تأیید فروشگاه، رد پیک، ویرایش کمیسیون و...) در <code>AuditLog</code> با جزئیات JSON ثبت می‌شود — یک الزام امنیتی/حسابرسی مهم.</div>
+</div>
+<div class="model-card">
+<h4>Notification</h4>
+<div class="fields">اعلان درون‌برنامه‌ای یا پیامکی به کاربر، معمولاً وابسته به یک سفارش خاص.</div>
+</div>
+
+<h2>۳.۱۳ کلان‌داده و هوش مصنوعی</h2>
+<div class="model-card">
+<h4>BehaviorLog</h4>
+<div class="fields">لاگ رفتار کاربران (جست‌وجو، مشاهدهٔ محصول، افزودن به سبد و...) حتی برای بازدیدکنندگان مهمان (<code>userId</code> اختیاری، <code>sessionId</code> اجباری) — پایهٔ تحلیل رفتاری و شخصی‌سازی.</div>
+</div>
+<div class="model-card">
+<h4>AiLog</h4>
+<div class="fields">ثبت هر تصمیم هوش مصنوعی (بررسی محصول، دسته‌بندی تیکت، تخمین اندازهٔ بسته، پردازش ارسال بین‌شهری، فشرده‌سازی فایل) به‌همراه ورودی/خروجی و نتیجهٔ نهایی (<code>decision</code>) — برای رهگیری و اشکال‌زدایی تصمیمات خودکار.</div>
+</div>
+
+<div class="note">
+<b>جمع‌بندی روابط کلیدی:</b> <code>User</code> مرکز گراف است. از آن به <code>Shop</code>، <code>Pick</code> و <code>AdminProfile</code> شاخه می‌زند. <code>Order</code> سه ضلع اصلی (<code>User</code> مشتری، <code>Shop</code> از طریق <code>OrderItem</code>، و <code>Pick</code>) را به‌هم وصل می‌کند و خودش منشأ <code>Transaction</code>، <code>Review</code>، <code>Shipment</code> و <code>Notification</code> است. الگوی JSON برای فیلدهای "در انتظار تأیید" (<code>pendingEdit</code>, <code>pendingCommissionChange</code>, <code>pendingBankChange</code>) در چند مدل تکرار شده — یک تصمیم طراحی آگاهانه برای گردش‌کار "تغییر پیشنهادی + تأیید طرف مقابل".
+</div>
+
+<h1>۴. سیستم احراز هویت (Auth)</h1>
+<p>سیستم احراز هویت به‌صورت دست‌ساز (بدون NextAuth) با JWT پیاده شده و دو مسیر ثبت‌نام دارد: <b>ثبت‌نام با موبایل + OTP</b> و <b>ورود با یوزرنیم/موبایل + رمز عبور</b>.</p>
+
+<h2>۴.۱ جریان ثبت‌نام (۳ مرحله)</h2>
+<ol>
+<li><b>ارسال کد (send-otp):</b> شمارهٔ موبایل نرمال‌سازی می‌شود؛ اگر کاربری با همان شماره از قبل <code>phoneVerified=true</code> دارد، خطای ۴۰۹ برمی‌گردد (هدایت به صفحهٔ ورود). در غیر این صورت یک کد OTP ساخته و رکوردهای قبلی همان شماره حذف می‌شوند.</li>
+<li><b>تأیید کد (verify-otp):</b> کد ۶ رقمی در برابر آخرین رکورد معتبر و استفاده‌نشده بررسی می‌شود؛ در صورت صحت، یک <b>توکن تأیید</b> کوتاه‌عمر (۱۵ دقیقه، JWT با <code>purpose: register</code>) صادر می‌شود.</li>
+<li><b>تکمیل پروفایل (register):</b> با ارائهٔ توکن تأیید + نام + یوزرنیم + رمز عبور، رکورد کاربر با <code>upsert</code> ساخته/به‌روزرسانی می‌شود، رمز با bcrypt هش می‌شود و بلافاصله یک Session Token صادر و در کوکی httpOnly ذخیره می‌شود (یعنی کاربر بعد از ثبت‌نام خودکار وارد می‌شود).</li>
+</ol>
+
+<h2>۴.۲ جریان ورود (login)</h2>
+<p>ورودی <code>identifier</code> می‌تواند شماره موبایل یا یوزرنیم باشد؛ سیستم به‌صورت خودکار تشخیص می‌دهد (اگر شکل موبایل معتبر نبود، به‌عنوان یوزرنیم نرمال می‌شود). رمز عبور با <code>bcrypt.compare</code> بررسی، وضعیت <code>isActive</code> کاربر چک، و در صورت موفقیت Session Token صادر می‌شود.</p>
+
+<h2>۴.۳ Session و میان‌افزار</h2>
+<table>
+<tr><th>مؤلفه</th><th>جزئیات</th></tr>
+<tr><td>الگوریتم</td><td>HS256 با کلید <code>NEXTAUTH_SECRET</code></td></tr>
+<tr><td>محتوای Payload</td><td><code>{ userId, role }</code></td></tr>
+<tr><td>کوکی</td><td><code>httpOnly</code>, <code>sameSite=lax</code>, <code>secure</code> در production</td></tr>
+<tr><td>محافظت مسیر</td><td><code>middleware.ts</code> روی <code>/account/*</code> و <code>/admin/*</code> اجرا می‌شود؛ ادمین‌ها اجازهٔ ورود به <code>/account</code> ندارند و برعکس</td></tr>
+<tr><td>خروج (logout)</td><td>صرفاً کوکی سشن پاک می‌شود</td></tr>
+<tr><td>وضعیت فعلی (me)</td><td>سشن را از کوکی می‌خواند و پروفایل عمومی کاربر (بدون رمز) را برمی‌گرداند</td></tr>
+</table>
+
+<div class="warn">
+<b>نکتهٔ امنیتی مهم:</b> در پاسخ <code>send-otp</code>، کد تست به‌صورت شفاف در فیلدهای <code>testCode</code> و <code>hint</code> به کلاینت برگردانده می‌شود و کد OTP فعلاً همیشه مقدار ثابت <code>TEST_OTP_CODE</code> است (نه یک کد تصادفی واقعی که واقعاً پیامک شود). این رفتار برای محیط توسعه/دمو مناسب است اما <b>پیش از رفتن به محیط Production باید غیرفعال شود</b>، در غیر این صورت هر کسی با دانستن شماره موبایل قربانی می‌تواند بدون دسترسی به گوشی او ثبت‌نام را تکمیل کند.
+</div>
+
+<h1>۵. نقشهٔ کامل API</h1>
+<p>در زمان بررسی، تنها API Routeهای زیر بین Backend واقعی و Prisma پیاده‌سازی شده‌اند. سایر بخش‌های پروژه (سفارش، محصول، فروشگاه، کیف پول، تیکت، ادمین) در فرانت‌اند با <b>دادهٔ نمایشی ثابت (mock/demo)</b> پیاده شده‌اند و هنوز به دیتابیس واقعی متصل نیستند — هرچند مدل‌های دیتابیس مربوطه از قبل در schema آماده‌اند.</p>
+
+<h2>۵.۱ Endpointهای پیاده‌سازی‌شده و متصل به دیتابیس</h2>
+<table>
+<tr><th>Method</th><th>مسیر</th><th>ورودی</th><th>خروجی / رفتار</th></tr>
+<tr><td>POST</td><td><code>/api/auth/send-otp</code></td><td><code>{ phone }</code></td><td>ارسال کد تأیید؛ ۴۰۹ اگر شماره قبلاً تأیید شده</td></tr>
+<tr><td>POST</td><td><code>/api/auth/verify-otp</code></td><td><code>{ phone, code }</code></td><td><code>{ verificationToken }</code></td></tr>
+<tr><td>POST</td><td><code>/api/auth/register</code></td><td><code>{ verificationToken, fullName, username, password }</code></td><td>ساخت کاربر + ورود خودکار</td></tr>
+<tr><td>POST</td><td><code>/api/auth/login</code></td><td><code>{ identifier, password }</code></td><td>صدور Session</td></tr>
+<tr><td>POST</td><td><code>/api/auth/logout</code></td><td>—</td><td>پاک‌سازی کوکی</td></tr>
+<tr><td>GET</td><td><code>/api/auth/me</code></td><td>—</td><td>پروفایل کاربر جاری یا <code>null</code></td></tr>
+</table>
+<p>همهٔ این هندلرها از الگوی یکسانی پیروی می‌کنند: اعتبارسنجی ورودی → فراخوانی توابع <code>lib/auth/*</code> → پاسخ استاندارد با <code>jsonOk</code>/<code>jsonError</code> (شکل خطا: <code>{ error: string }</code> با کد HTTP مناسب).</p>
+
+<h2>۵.۲ Endpointهای برنامه‌ریزی‌شده ولی هنوز پیاده‌سازی‌نشده</h2>
+<p>این مسیرها در سند ساختار پروژه (<code>README-structure.md</code>) به‌عنوان بخشی از معماری هدف ذکر شده‌اند، اما فایل <code>route.ts</code> مربوط به آن‌ها هنوز نوشته نشده و صفحات فرانت مرتبط از دادهٔ ثابت استفاده می‌کنند:</p>
+<table>
+<tr><th>حوزه</th><th>مسیر پیشنهادی</th><th>وضعیت</th></tr>
+<tr><td>محصولات</td><td><code>/api/products</code></td><td><span class="badge b-plan">برنامه‌ریزی‌شده</span></td></tr>
+<tr><td>فروشگاه‌ها</td><td><code>/api/shops</code></td><td><span class="badge b-plan">برنامه‌ریزی‌شده</span></td></tr>
+<tr><td>سفارش‌ها</td><td><code>/api/orders</code></td><td><span class="badge b-plan">برنامه‌ریزی‌شده</span></td></tr>
+<tr><td>باکس‌ها</td><td>—</td><td><span class="badge b-mock">فقط UI با دادهٔ نمایشی</span></td></tr>
+<tr><td>سبد خرید / پرداخت</td><td>—</td><td><span class="badge b-mock">فقط UI با دادهٔ نمایشی</span></td></tr>
+<tr><td>کیف پول / برداشت وجه</td><td>—</td><td><span class="badge b-mock">فقط UI با دادهٔ نمایشی</span></td></tr>
+<tr><td>پنل فروشگاه (محصول/باکس/سفارش/کمپین)</td><td>—</td><td><span class="badge b-mock">فقط UI با دادهٔ نمایشی</span></td></tr>
+<tr><td>اپ پیک (سفارش جاری، پذیرش، تحویل)</td><td>—</td><td><span class="badge b-mock">فقط UI با دادهٔ نمایشی</span></td></tr>
+<tr><td>پنل ادمین (شهرها، فروشگاه‌ها، تخلفات، تیکت‌ها)</td><td>—</td><td><span class="badge b-mock">فقط UI با دادهٔ نمایشی</span></td></tr>
+</table>
+<div class="ok"><b>جمع‌بندی وضعیت فعلی:</b> زیرساخت دیتابیس (schema) کاملاً برای کل محصول طراحی و آماده شده؛ لایهٔ Auth به‌طور کامل کدنویسی و کارکرد دارد؛ اما بدنهٔ اصلی منطق تجاری (سفارش، پرداخت، کیف‌پول، تأیید محصول توسط AI و غیره) هنوز فقط در حد رابط کاربری نمایشی (Prototype/UI Mockup) پیاده شده و باید در فازهای بعدی به API واقعی متصل شود.</div>
+
+<h1>۶. منطق‌های کسب‌وکار طراحی‌شده (از طریق تحلیل Schema)</h1>
+<p>حتی بدون کد API، بخش زیادی از منطق تجاری محصول از طریق طراحی مدل‌های دیتابیس و کامنت‌های فارسی داخل schema قابل استخراج است:</p>
+
+<h3>۶.۱ کمیسیون‌های چندلایه</h3>
+<ul>
+<li>کمیسیون فروش محصول تکی: <b>۷٪</b> پیش‌فرض</li>
+<li>کمیسیون فروش باکس: <b>۲۰٪</b> پیش‌فرض</li>
+<li>کمیسیون پلتفرم از پیک: <b>۱۶٪</b> پیش‌فرض</li>
+<li>هر تغییر در این نرخ‌ها نیازمند تأیید طرف مقابل (فروشگاه/پیک) است — پلتفرم نمی‌تواند به‌صورت یک‌طرفه تغییر دهد.</li>
+</ul>
+
+<h3>۶.۲ جریمهٔ عودت سفارش</h3>
+<p>وقتی پیک سفارشی را عودت می‌دهد (<code>Order.isReturned</code>)، طبق نوع تراکنش <code>PICK_FEE_PENALTY</code>، <b>۱.۵ برابر</b> هزینهٔ پیک از کیف پول مشتری کسر و به پیک پرداخت می‌شود.</p>
+
+<h3>۶.۳ هزینهٔ ارسال خارج‌شهر</h3>
+<p>فرمول محاسبه: <code>totalCost = localPostCost × 1.3 + platformFee</code>. مسیر و سرویس حمل می‌تواند توسط لایهٔ AI به‌صورت خودکار پردازش شود (<code>Shipment.processedByAi</code>).</p>
+
+<h3>۶.۴ گردش تأیید محصول</h3>
+<pre>ثبت محصول توسط فروشگاه
+        │
+        ▼
+   PENDING_AI  ──(رد AI)──▶ REJECTED_AI ──(اصرار فروشنده)──▶ PENDING_ADMIN ──▶ APPROVED / REJECTED نهایی
+        │
+   (تأیید AI)
+        ▼
+     APPROVED</pre>
+
+<h3>۶.۵ مهلت‌های زمانی خودکار (SLA) سفارش</h3>
+<table>
+<tr><th>مرحله</th><th>مهلت</th></tr>
+<tr><td>تحویل توسط پیک پس از دریافت از فروشگاه</td><td>۳ ساعت</td></tr>
+<tr><td>ارزیابی مشتری — سفارش همشهری</td><td>۷ ساعت (با توقف بازهٔ ۲۳:۰۰ تا ۸:۰۰)</td></tr>
+<tr><td>ارزیابی مشتری — سفارش خارج‌شهر</td><td>۹۶ ساعت</td></tr>
+<tr><td>قابلیت پیگیری/پشتیبانی سفارش</td><td>۱ هفته از ثبت</td></tr>
+<tr><td>بررسی گزارش تخلف توسط ادمین</td><td>۲۴ ساعت</td></tr>
+</table>
+<p>عبور از مهلت بدون واکنش مناسب، وضعیت سفارش را به <code>ESCALATED_ADMIN</code> منتقل می‌کند تا کارشناس دستی وارد عمل شود.</p>
+
+<h3>۶.۶ باکس بین‌فروشگاهی</h3>
+<p>وقتی <code>Box.isInterShopEnabled=true</code> باشد، آن باکس می‌تواند از ویترین فروشگاه‌های دیگر هم سفارش داده شود؛ در این حالت <code>OrderItem.isInterShopFulfillment=true</code> و <code>fulfillingShopId</code> فروشگاه واقعیِ تأمین‌کننده را مشخص می‌کند (مالک باکس و تأمین‌کنندهٔ واقعی می‌توانند متفاوت باشند).</p>
+
+<h3>۶.۷ سیستم امتیاز و سطح‌بندی کاربر</h3>
+<p>هر رویداد مثبت/منفی (خرید، ثبت‌نظر به‌موقع، معرفی، تخلف) یک رکورد در <code>ScoreHistory</code> ایجاد می‌کند و مجموع امتیاز، <code>tier</code> کاربر را در چهار سطح Bronze/Silver/Gold/Platinum تعیین می‌کند.</p>
+
+<h1>۷. امنیت، ریسک‌ها و نکات فنی</h1>
+<table>
+<tr><th>موضوع</th><th>وضعیت / ریسک</th></tr>
+<tr><td>Provider دیتابیس</td><td><code>datasource db</code> در schema مقدار <code>provider = "postgresql"</code> دارد، در حالی‌که کامنت بالای فایل و راهنمای دیپلوی صراحتاً از <b>MySQL روی هاست پارس‌پک</b> صحبت می‌کنند. این ناسازگاری باید پیش از مایگریشن رفع شود (یا provider باید <code>mysql</code> شود یا هاست باید PostgreSQL فراهم کند).</td></tr>
+<tr><td>افشای کد OTP</td><td>کد تست همیشه ثابت و در پاسخ API قابل مشاهده است — نیازمند پیاده‌سازی SMS واقعی و کد تصادفی قبل از عرضه.</td></tr>
+<tr><td>Rate limiting</td><td>هیچ محدودیت نرخ درخواست روی <code>send-otp</code>/<code>login</code> دیده نشد؛ ریسک Brute-force و پیامک‌بمب.</td></tr>
+<tr><td>هش رمز عبور</td><td>bcrypt با ۱۲ راند — مقدار مناسب و امن است.</td></tr>
+<tr><td>کوکی سشن</td><td>httpOnly + sameSite=lax + secure در production — پیاده‌سازی صحیح.</td></tr>
+<tr><td>گاردهای نقش (RBAC)</td><td>در سطح Middleware و <code>requireAdminSession</code> پیاده شده، اما چون بیشتر API Routeهای عملیاتی هنوز نوشته نشده‌اند، لازم است این گاردها در تمام Endpointهای آینده (به‌خصوص عملیات مالی و ادمین) رعایت شوند.</td></tr>
+<tr><td>اعتبارسنجی ورودی</td><td>در Routeهای auth با بررسی دستی رشته‌ها انجام می‌شود؛ برای مقیاس بزرگ‌تر پیشنهاد می‌شود از یک کتابخانهٔ Schema Validation مثل Zod استفاده شود.</td></tr>
+</table>
+
+<h1>۸. راهنمای دیپلوی (خلاصه)</h1>
+<p>بر اساس سند داخلی پروژه، استقرار روی هاست اشتراکی پارس‌پک با پشتیبانی Node.js به این ترتیب انجام می‌شود:</p>
+<ol>
+<li>ساخت دیتابیس MySQL و کاربر آن در cPanel، تنظیم <code>DATABASE_URL</code> در فایل <code>.env</code></li>
+<li>اجرای <code>npx prisma generate</code> و <code>npx prisma migrate deploy</code></li>
+<li>ساخت پروژه با <code>npm run build</code></li>
+<li>فعال‌سازی Node.js App در cPanel (نسخهٔ ۱۸ به بالا) با فایل استارتاپ سفارشی <code>server.js</code> که سرور HTTP سفارشی Next.js را اجرا می‌کند</li>
+<li>آپلود فایل‌ها (به‌جز <code>node_modules</code> و <code>.next</code>)، اجرای <code>npm install</code> روی سرور و ری‌استارت اپلیکیشن</li>
+</ol>
+
+<h1>۹. جمع‌بندی و پیشنهادات بعدی</h1>
+<ul>
+<li>اولویت اول: پیاده‌سازی API واقعی برای <b>سفارش‌ها</b>، چون این مدل قلب کل سیستم است و همهٔ سه نقش (مشتری/فروشگاه/پیک) و لایهٔ مالی به آن وابسته‌اند.</li>
+<li>رفع ناسازگاری provider دیتابیس (MySQL در برابر PostgreSQL) پیش از هرگونه Migration روی محیط Production.</li>
+<li>پیاده‌سازی ارسال واقعی پیامک OTP و حذف افشای کد تست از پاسخ API.</li>
+<li>افزودن Rate limiting روی Endpointهای احراز هویت.</li>
+<li>اتصال تدریجی پنل‌های فروشگاه، پیک و ادمین به API واقعی، به‌ترتیب اولویت کسب‌وکار.</li>
+<li>پیاده‌سازی لایهٔ هوش مصنوعی که در schema پیش‌بینی شده (<code>AiLog</code>, <code>aiCheckNote</code>, <code>processedByAi</code>, <code>aiTitle</code>) اما هنوز در کد سرویس واقعی ندارد.</li>
+</ul>
+
+<div class="footer-note">پایان مستندات بک‌اند · DiGiFACE · تهیه‌شده بر اساس بررسی مستقیم کد ریپازیتوری</div>
+
+</div>
+</body>
+</html>
