@@ -36,7 +36,11 @@ const boxes = [
 function formatToman(n: number) {
   return n.toLocaleString('fa-IR')
 }
-
+export function generateStaticParams() {
+  return [
+    { id: '1' },
+  ]
+}
 export default function ShopDetailPage() {
   const [tab, setTab] = useState<'products' | 'boxes'>('products')
   const [cart, setCart] = useState<Record<string, boolean>>({})
